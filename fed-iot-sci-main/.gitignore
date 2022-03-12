@@ -1,0 +1,9 @@
+data/cifar10/data
+data/mnist/data
+data/cifar100/data
+data/synthetic/data
+
+log/
+
+
+
