@@ -12,16 +12,14 @@
 
     3.1. Open browser, and enter URL
 
-    3.2. user: xxxx pwd: xxxxx
-
-    3.3. PORT Management -> DHCP Setting
+    3.2. PORT Management -> DHCP Setting
 
         3.3.1. Scan devices under this wifi
         3.3.2. Check device's connect by identity
 
-    3.4. VLAN: address binding
+    3.3. VLAN: address binding
         
-        3.4.1. Bing address of server to a fix ip 
+        3.4.1. Address of server to a fix ip 
         3.4.2. Tips: fix ip of devices and note them
 
 ## do experiment
