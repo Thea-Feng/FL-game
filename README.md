@@ -29,12 +29,12 @@ Our code is based on the code for [fedavgpy](https://github.com/lx10077/fedavgpy
 ### Overview
 on server
 `
-python app.py --model server
+python $MAIN --model server
 `
 
 on client
 `
-python app.py --model client
+python $MAIN --model client
 `
 
 1. Preparation
@@ -63,6 +63,7 @@ python app.py --model client
 
     
 Notes:
+
 1.In `args` of `Pre.py main_bench.py main_property.py`, you can modify following parameters to get different results
 '''
 'dataset': dataset name
@@ -74,6 +75,7 @@ Notes:
 'num_round': number of simulation
 'alpha': alpha
 '''
+
 Results in .json format contains global accuary, loss, time and other imformation. 
 
 2.Different dataset requires different parameters setting so that the solver can work sucessfully, e.g., too large cost on average may result in no solution(negative q) due to the constraint.    
