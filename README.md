@@ -49,7 +49,7 @@ python $MAIN --model client
     python data/synthetic/generate_synthetic.py
     python data/mnist/generate_random_niid.py
     python data/emnist/generate_random_niid.py
-        ``` 
+     ``` 
     
 
     1.3. run `Pre.py` to fetch alpha for different dataset 
@@ -65,7 +65,7 @@ python $MAIN --model client
 Notes:
 
 1.In `args` of `Pre.py main_bench.py main_property.py`, you can modify following parameters to get different results
-'''
+```
 'dataset': dataset name
 'test_num': test number
 'C': cost
@@ -74,7 +74,7 @@ Notes:
 'experiment_folder': folder to save result
 'num_round': number of simulation
 'alpha': alpha
-'''
+```
 
 Results in .json format contains global accuary, loss, time and other imformation. 
 
