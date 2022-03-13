@@ -1,7 +1,7 @@
 # Incentive Mechanism Design for Federated Learning with Partial Client Participation
-# Part 1 Hardware prototype: Fed-IoT-Sci
-# Under fed-iot-sci-main folder
-**This code is used for randomly selecting clients for Federated Learning IoT experiment**
+
+This repository contains the codes for the paper
+> [How to Recruit Clients for Federated Learning: Incentive Mechanism Design with Randomized Client Participation]
 
 Our code is based on the code for [fedavgpy](https://github.com/lx10077/fedavgpy) and [FedProx](https://github.com/litian96/FedProx).
 
