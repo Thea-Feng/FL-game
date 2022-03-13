@@ -8,7 +8,7 @@ cpath = os.path.dirname(__file__)
 import torchvision.transforms as transforms
 
 
-NUM_USER = 200
+NUM_USER = 40
 
 NUM_LABEL = 26
 

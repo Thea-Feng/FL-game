@@ -2,28 +2,18 @@
 This repository is modefied and referred from https://github.com/litian96/FedProx/tree/master/data/synthetic_iid
 """
 
-import json 
-import pickle
+import pickle5 as pickle
 import numpy as np
-# import random
+import random
 import os
 cpath = os.path.dirname(os.path.abspath(__file__))
-'''
-    * For system heterogenity
-        - Seed = 7
-        - lognormal(4,1.5)
-    * For STA heter
-        - version 7-7
-            |- lognormal(4,2)
-'''
 
-NUM_USER = 100
+
+NUM_USER = 40
 NUM_CLASS = 10
 DIMENSION = 60
-VERSION = "n30"
-SAVE = False
+SAVE = True
 DATASET_FILE = os.path.join(cpath, 'data')
-np.random.seed(7)
 
 
 def softmax(x):
@@ -34,7 +24,6 @@ def softmax(x):
 
 def generate_synthetic(alpha, beta, iid=True):
     samples_per_user = np.random.lognormal(4, 2, NUM_USER).astype(int) + 50
-    # samples_per_user = np.array( [400]*NUM_USER)
     print('>>> Sample per user: {}'.format(samples_per_user.tolist()))
 
     X_split = [[] for _ in range(NUM_USER)]
@@ -87,11 +76,11 @@ def generate_synthetic(alpha, beta, iid=True):
 
 
 def generate_for_task(alpha, beta, iid):
-    dataset_name = 'A{}_B{}_{}'.format(alpha, beta, 'iid' if iid else 'niid')
+    dataset_name = 'synthetic_alpha{}_beta{}_{}'.format(alpha, beta, 'iid' if iid else 'niid')
     print('\n')
     print('>>> Generate data for {}'.format(dataset_name))
-    train_path = "{}/data/train/V{}_{}.json".format(cpath, VERSION, dataset_name)
-    test_path = "{}/data/test/V{}_{}.json".format(cpath, VERSION, dataset_name)
+    train_path = "{}/data/train/{}.pkl".format(cpath, dataset_name)
+    test_path = "{}/data/test/{}.pkl".format(cpath, dataset_name)
 
     dir_path = os.path.dirname(train_path)
     if not os.path.exists(dir_path):
@@ -110,7 +99,7 @@ def generate_for_task(alpha, beta, iid):
     for i in range(NUM_USER):
         uname = i
         combined = list(zip(X[i], y[i]))
-        np.random.shuffle(combined)
+        random.shuffle(combined)
         X[i][:], y[i][:] = zip(*combined)
         num_samples = len(X[i])
         train_len = int(0.9 * num_samples)
@@ -123,12 +112,11 @@ def generate_for_task(alpha, beta, iid):
         test_data['user_data'][uname] = {'x': X[i][train_len:], 'y': y[i][train_len:]}
         test_data['num_samples'].append(test_len)
 
-    print(train_data['num_samples'])
     if SAVE:
-        with open(train_path, 'w') as outfile:
-            json.dump(train_data, outfile)
-        with open(test_path, 'w') as outfile:
-            json.dump(test_data, outfile)
+        with open(train_path, 'wb') as outfile:
+            pickle.dump(train_data, outfile, pickle.HIGHEST_PROTOCOL)
+        with open(test_path, 'wb') as outfile:
+            pickle.dump(test_data, outfile, pickle.HIGHEST_PROTOCOL)
 
 
 if __name__ == "__main__":

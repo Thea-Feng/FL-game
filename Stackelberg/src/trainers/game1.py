@@ -106,7 +106,7 @@ class Game1Trainer(BaseTrainer):
         self.prob = prob
 
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! pay attention to here
-        R = self.real_round
+        R = self.num_round
         # R = 1000.0
 
         self.latest_model = self.worker.get_flat_model_params().detach()
@@ -177,8 +177,9 @@ class Game1Trainer(BaseTrainer):
 
                 
             print("Round %s | Spent %ss" %(round_i, time.time() - st_) )
+        self.save_log()
 
-
+        self.end_train()
         # print('lam',self.logDict['lambda'])
         # print('Pk',self.logDict['Pk'])   
             
@@ -201,23 +202,6 @@ class Game1Trainer(BaseTrainer):
         return probs
 
         
-    def select_clients_with_prob(self, seed=1):
-        num_clients = min(self.clients_per_round, len(self.clients))
-        np.random.seed(seed)
-        index = np.random.choice(len(self.clients), num_clients, p=self.prob)
-        index = sorted(index.tolist())
-
-        select_clients = []
-        select_index = []
-        repeated_times = []
-        for i in index:
-            if i not in select_index:
-                select_clients.append(self.clients[i])
-                select_index.append(i)
-                repeated_times.append(1)
-            else:
-                repeated_times[-1] += 1
-        return select_clients, repeated_times
 
     def aggregate(self, solns, clients):
         averaged_solution = torch.zeros_like(self.latest_model)

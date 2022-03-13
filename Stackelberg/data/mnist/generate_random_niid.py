@@ -8,7 +8,7 @@ import torchvision.transforms as transforms
 
 
 
-NUM_USER = 30
+NUM_USER = 40
 SAVE = True
 DATASET_FILE = os.path.join(cpath, 'data')
 IMAGE_DATA = False 

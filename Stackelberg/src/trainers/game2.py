@@ -178,9 +178,9 @@ class Game2Trainer(BaseTrainer):
                 
             print("Round %s | Spent %ss" %(round_i, time.time() - st_) )
 
+        self.save_log()
 
-        print('lam',self.logDict['lambda'])
-        print('Pk',self.logDict['Pk'])   
+        self.end_train()
             
             
 

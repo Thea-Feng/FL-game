@@ -1,3 +1,0 @@
-default IP->192.168.43.2, PORT->1234
-current IP->192.168.43.2, PORT->1234
-TCP SOCKET: Set up as server.

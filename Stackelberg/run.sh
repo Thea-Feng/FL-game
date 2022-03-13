@@ -24,10 +24,12 @@ HOSTS="192.168.43.20 192.168.43.21 192.168.43.22 192.168.43.23 192.168.43.24 192
 
 # execute program
 for HOSTNAME in ${HOSTS} ; do
-    # ssh -o StrictHostKeyChecking=no -l ${USERNAME} ${HOSTNAME} "cd /home/pi/fed-iot/fed-iot-sci; python app.py --mode client > log.txt &"
+
     ssh -o StrictHostKeyChecking=no -l ${USERNAME} ${HOSTNAME} "sudo su - <<'EOF' 
-    cd /home/pi/fed-iot/fed-iot-sci
-    python app.py --mode client > log.txt &"
+    cd /home/Stackelberg
+    python main_bench.py --model server > log.txt &
+    python main_property.py --model server > log.txt &"
+
     echo ${HOSTNAME}
     sleep 2
 done

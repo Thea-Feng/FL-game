@@ -107,10 +107,7 @@ class FedIoTClient:
         self.optimizer = GD(model.parameters(), lr=self.args['lr'], weight_decay=self.args['wd'])
         self.num_epoch = self.args['num_epoch']
 
-        if self.algo != 'lx_s2t':
-            self.worker = LrdWorker(model, self.optimizer, self.args)
-        else:
-            self.worker = LrAdjustWorker(model, self.optimizer, self.args)
+        self.worker = LrAdjustWorker(model, self.optimizer, self.args)
 
 
     def test_comm_speed(self, ):
@@ -133,11 +130,8 @@ class FedIoTClient:
             'comp_lim': self.compLimit,
             'lr': dict['lr']
         }
-        if self.algo != 'lx_s2t':
-            local_train_result = self.client.local_train(trainConfig)
-        else:
-            m = len(self.client.train_data)/self.all_train_data_num*self.args['num_clients']
-            local_train_result = self.client.local_train(trainConfig, multiplier=m)
+        
+        local_train_result = self.client.local_train(trainConfig)
         self.socketClient.recv_signal(connConfig.SERVER_SENDER)
         info = self.socketClient.send_msg(
             message={

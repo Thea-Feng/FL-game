@@ -48,16 +48,18 @@ class FedIoTServer:
                 self.args.update({'input_shape': 784, 'num_class': 10}) 
             else:
                 self.args.update({'input_shape': (1, 28, 28), 'num_class': 10})
+        elif dataset == 'emnist':
+            if model == 'logistic':
+                self.args.update({'input_shape': 784, 'num_class': 26})
+            else:
+                self.args.update({'input_shape':(1,28,28), 'num_class':26})
 
 
         # Trainer
         model = choose_model(self.args)
         self.optimizer = GD(model.parameters(), lr=self.args['lr'], weight_decay=self.args['wd'])
         self.num_epoch = self.args['num_epoch']
-        if self.algo != 'lx_s2t':
-            self.worker = LrdWorker(model, self.optimizer, self.args)
-        else:
-            self.worker = LrAdjustWorker(model, self.optimizer, self.args)
+        self.worker = LrAdjustWorker(model, self.optimizer, self.args)
 
         self.clients = []
 

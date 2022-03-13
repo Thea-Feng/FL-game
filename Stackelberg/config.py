@@ -1,24 +1,7 @@
 # GLOBAL PARAMETERS
 DATASETS = ['sent140', 'nist', 'shakespeare',
             'mnist', 'synthetic', 'cifar10','emnist','femnist']
-TRAINERS = {'fedavg': 'FedAvgTrainer',
-            'fedavg4': 'FedAvg4Trainer',
-            'fedavg5': 'FedAvg5Trainer',
-            'fedavg6': 'FedAvg6Trainer',   # scheme I FG
-            'fedavg6b': 'FedAvg6bTrainer', # scheme I SG
-            'fedavg7': 'FedAvg7Trainer',    # Scheme I (preprocess grad)
-            'fedavg8': 'FedAvg8Trainer',
-            'fedavg8b': 'FedAvg8bTrainer',
-            'fedavg9': 'FedAvg9Trainer',
-            'fedavg10': 'FedAvg10Trainer',
-            'fedavg10b': 'FedAvg10bTrainer',
-            'fedavg11': 'FedAvg11Trainer',
-            'fedavg12': 'FedAvg12Trainer',
-            'fedavg13': 'FedAvg13Trainer', 
-            'fedavg14': 'FedAvg14Trainer',
-            'fedavg15': 'FedAvg15Trainer', # TEST
-            'game1': 'Game1Trainer',
-            'game2': 'Game2Trainer',
+TRAINERS = {
             'pretrain1':'Pretrain1Trainer',
             'Unigame':'UnigameTrainer',
             'Rightgame':'RightgameTrainer',

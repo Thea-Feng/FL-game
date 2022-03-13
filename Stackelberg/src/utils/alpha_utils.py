@@ -1,5 +1,12 @@
 ALPHA_MAP = {
-    # paste dataset name and alpha as following format:
+    'mnist_niid1_6_0_N100_v1.0': 1.8207615809978714,
+    'synthetic_V6-25_A1_B1_niid': 0.253262419443548,
+    # 35,45,49
     # 'synthetic_V7-7_A0_B0_niid': 0.25421414768186856,
-    
+    'emnist_niid1_10_0_N100': 2.117020662584528,
+    'mnist_niid1_6_1_N100_v1.0': 1.8207615809978714,
+
+    # 35,45,49
+    # '': ,
+    # '': ,
 }

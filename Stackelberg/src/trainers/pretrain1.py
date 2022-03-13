@@ -179,7 +179,9 @@ class Pretrain1Trainer(BaseTrainer):
 
                 
             print("Round %s | Spent %ss" %(round_i, time.time() - st_) )
-        
+        self.save_log()
+
+        self.end_train()
 
     def aggregate(self, solns, clients):
         averaged_solution = torch.zeros_like(self.latest_model)
