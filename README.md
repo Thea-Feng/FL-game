@@ -1,8 +1,8 @@
-# Incentive Mechanism Design for Federated Learning with Partial Client Participation
+# Incentive Mechanism Design for Unbiased Federated Learning with Randomized Client Participation
 
-This repository contains the codes for the paper
+This repository contains the codes for the publication: 
 > [How to Recruit Clients for Federated Learning: Incentive Mechanism Design with Randomized Client Participation]
-
+B.Luo, Y. Feng, S. Wang, J. Huang, L. Tassiulas, “Incentive Mechanism Design for Unbiased Federated Learning with Randomized Client Participation”, accepted in Proc. IEEE International Conference on Distributed Computing Systems (ICDCS), 2023. https://doi.org/10.48550/arXiv.2304.07981
 Our code is based on the code for [fedavgpy](https://github.com/lx10077/fedavgpy) and [FedProx](https://github.com/litian96/FedProx).
 
 
